@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ping.h                                          :+:      :+:    :+:   */
+/*   ft_ping_mac.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iwillens <iwillens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/12 15:41:35 by iwillens          #+#    #+#             */
-/*   Updated: 2023/06/14 09:44:57 by iwillens         ###   ########.fr       */
+/*   Created: 2023/06/14 09:21:59 by iwillens          #+#    #+#             */
+/*   Updated: 2023/06/14 11:26:44 by iwillens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PING_H
-# define FT_PING_H
+#ifndef FT_PING_MAC_H
+# define FT_PING_MAC_H
 
-# include <sys/socket.h>
-
-# if __APPLE__
-#  include "ft_ping_mac.h"
-# else
-#  include "ft_ping_linux.h"
-# endif
+/*
+** file to determine platform-specific variables making the code compilable
+** both for Mac and linux.
+** Developed using Catalina (10.15.7) and Debian Wheeler (7.11)
+*/
 
 
-
-# define THISISAMAC 0
-
-# if __APPLE__
-#  undef THISISAMAC
-#  define THISISAMAC 1
-# endif
-
-
+# define SOCKET_DOMAIN AF_INET
+# define SOCKET_TYPE SOCK_DGRAM
+# define SOCKET_PROTOCOL IPPROTO_ICMP
 
 #endif
