@@ -6,7 +6,7 @@
 #    By: iwillens <iwillens@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/01 10:55:01 by iwillens          #+#    #+#              #
-#    Updated: 2023/06/14 10:02:30 by iwillens         ###   ########.fr        #
+#    Updated: 2023/06/14 10:33:00 by iwillens         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,26 +30,19 @@ SRCS =  ft_putchar.c \
 
 OBJS = $(patsubst %.c, %.o, ${SRCS})
 
-
-ifeq ($(HOSTTYPE),)
-	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
-endif
-HOST_FILE = .${HOSTTYPE}
-
 all : $(NAME)
 
-${NAME} : ${OBJS} ${HOST_FILE}
-		@ar -r ${NAME} ${OBJS}
-		@echo "\033[95m${NAME} is built. \033[0m"
+${NAME} : ${OBJS}
+	@ar -r ${NAME} ${OBJS}
+	@echo "\033[95m${NAME} is built. \033[0m"
 
-%.o: %.c ${HOST_FILE}
-		@gcc -c -Wall -Wextra -Werror -fvisibility=hidden $< -o $@ 
+%.o: %.c
+	gcc -c -Wall -Wextra -Werror -fvisibility=hidden $< -o $@ 
 
 clean: 
-		@rm -f ${OBJS}
-		@rm -f ${HOST_FILE}
+	@rm -f ${OBJS}
 
 fclean : clean
-		@rm -f ${NAME}
+	@rm -f ${NAME}
 
 re : fclean libft.a

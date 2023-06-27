@@ -6,7 +6,7 @@
 /*   By: iwillens <iwillens@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 15:41:35 by iwillens          #+#    #+#             */
-/*   Updated: 2023/06/14 09:44:57 by iwillens         ###   ########.fr       */
+/*   Updated: 2023/06/15 10:58:43 by iwillens         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 # define FT_PING_H
 
 # include <sys/socket.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
+# include <netdb.h>
+# include <stdio.h>
+# include "libft.h"
 
 # if __APPLE__
 #  include "ft_ping_mac.h"
@@ -31,5 +36,6 @@
 # endif
 
 
+void get_addrinfo(char *address);
 
 #endif
